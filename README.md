@@ -1,8 +1,15 @@
+
 # Object Orientation
 
-## Overview
+## Introduction
 
-We'll introduce the concept of Object Oriented Programming (OOP)
+In this section, you'll be'll introduced to the concept of Object Oriented Programming (OOP).
+
+## Objectives
+
+You will be able to
+- Explain what Object-Oriented Programming is about
+- Understand why it is important to know about OOP as a data scientist
 
 ## Object-Oriented Programming (OOP)
 
@@ -30,3 +37,7 @@ An object in code is a thing with all the data and all the logic required to com
 Object-oriented programming was born from the trend of making digital lives reflect our real lives. In the 1970's, [Adele Goldberg](https://en.wikipedia.org/wiki/Adele_Goldberg_%28computer_scientist%29) and [Alan Kay](https://en.wikipedia.org/wiki/Alan_Kay) developed an object-oriented language at Xerox PARC called SmallTalk, which was used in the first personal computer.
 
 Python comes with a few types of Objects to get us started, things like `int` for Integer, `str` for String, `list` for List, etc. We call these base types of Objects "Primitives." Primitives already have methods we can call on them, for example: `.title()` for a String. But what if we wanted to create a new type of object in our programming universe, a new kind of object for our code? With Object Oriented Programming, we can do just that by using the `class` keyword!
+
+## Summary
+
+You should now have a better understanding of the concept of Object Oriented Programming (OOP)!
