@@ -1,9 +1,9 @@
 
-# Introduiction to Object Orientation
+# Introduction to Object Orientation
 
 ## Introduction
 
-In this section, you'll be'll introduced to the concept of Object Oriented Programming (OOP).
+In this section, you'll be introduced to the concept of Object Oriented Programming (OOP).
 
 ## Objectives
 
@@ -13,31 +13,20 @@ You will be able to
 
 ## Object-Oriented Programming (OOP)
 
-*An object-oriented approach to application development makes programs more intuitive to design, faster to develop, more amenable to modification, and easier to understand.*  
-—[*Object-Oriented Programming with Objective-C*][apple_oop_guide_intro], Apple Inc.
+When programmers started writing code, originally they took a procedural approach. They'd write a series of sequential steps, using conditional statements and even the dreaded [GOTO](https://en.wikipedia.org/wiki/Goto) statement to branch their logic and their program flow. There would be a set of global variables (variables with values that anyone could change anywhere within the application) for keeping track of the "state" of the application.
 
-[apple_oop_guide_intro]: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/OOP_ObjC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005149-CH1-SW2
+Unfortunately, as they got bigger such programs were really hard to manage. Firstly, if they ever wanted to repeat the same business logic, they either had to copy it or loop back to where it was in the program, and secondly, it became really hard to keep track of where those variables got changed, making it really hard to reason about the program and to avoid small changes to the program breaking huge pieces of the application.
 
-It's natural to wonder, "how can a string of ones and zeroes be referred to as an 'object'?" The use of the word "object" is an abstraction of thought. An "object" in code has no more physical form than does a word in any human language. Sure, words have physical representations: speaking a word causes air to vibrate in a sound wave, ink on a page can be shaped into symbols that represent the word, a meaning can be pointed at or mimed out; but none of these are the word itself. Human language is a system of abstraction: it communicates the *idea* of a thing, but not the thing itself.
+One solution was to break the common subroutines into separate "functions". This was a huge step forward. Now you could write a short script, and by calling it multiple times, passing various parameters you could reuse it safely. You could also write small automated tests (unit tests) to verify the behavior of those functions so you'd know how they would behave with various types of inputs. There is a whole branch of software development devoted just to functional programming and it can be a very effective way to write and reason about complex code bases. Languages such as Haskell and Clojure are primarily "Functional Programming languages". They are extremely powerful, but have a reputation for being a little harder for developers to learn and use and because of that are less popular than languages that are primarily Object Oriented.
 
-![](https://upload.wikimedia.org/wikipedia/en/b/b9/MagrittePipe.jpg)  
-Translation: "This is not a pipe." - [*The Treachery of Images*](https://en.wikipedia.org/wiki/The_Treachery_of_Images), [René Magritte](https://en.wikipedia.org/wiki/Ren%C3%A9_Magritte), 1927  
+Languages like Ruby and Python are often considered to be primarily "Object Oriented" (OO) programnming languages. In part, OO programming came from the question where do we put our functions and our data". One way to organize functions is in libraries. This is still done even in OO programming languages, so you might well have a library like `statsmodels` and `import statsmodels.formula.api as smf` to get access to a series of functions related to formulae.
 
-This image of a pipe is no more a pipe than the word "pipe" is a pipe; in the same way, a code object named `pipe` is not a pipe, but only another form of representing a pipe.
+However, in OO programming languages, you also get the ability to create objects. Objects are a logical bundle of functions (they're called methods if they are associated to an object) and variables, and for many classes of programming, once you get used to them, they provide a really useful abstraction.
 
->As humans, we’re constantly faced with myriad facts and impressions that we must make sense of. To do so, we must abstract underlying structure away from surface details and discover the fundamental relations at work. Abstractions reveal causes and effects, expose patterns and frameworks, and separate what’s important from what’s not. Object orientation provides an abstraction of the data on which you operate; moreover, it provides a concrete grouping between the data and the operations you can perform with the data—in effect giving the data behavior.  
->—[*Object-Oriented Programming with Objective-C*](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/OOP_ObjC/Articles/ooOOP.html#//apple_ref/doc/uid/TP40005149-CH8-SW3), Apple Inc.
+So, you might have a Person class with it's code saved in a file called `person.py` which describes both the properties of a person (height, weight, date of birth) and their behaviors (everything from their `full_name()` to their `current_age()` ).
 
-A code object representing a water pipe (instead of a smoking pipe) might contain values for `length`, `diameter`, `material`, and `manufacturer`. The bundling of these individual pieces of information together begins to form a larger whole.
-
-Object-Oriented Programming, however, does more than just bundle up individual pieces of data that represent a "thing" — it also bundles customized functions that can be performed *on* that data. These are called **methods**: behaviors that an object performs upon its internal data and even upon other code objects.
-
-An object in code is a thing with all the data and all the logic required to complete a task. Objects are models and metaphors for the problems we solve in code.
-
-Object-oriented programming was born from the trend of making digital lives reflect our real lives. In the 1970's, [Adele Goldberg](https://en.wikipedia.org/wiki/Adele_Goldberg_%28computer_scientist%29) and [Alan Kay](https://en.wikipedia.org/wiki/Alan_Kay) developed an object-oriented language at Xerox PARC called SmallTalk, which was used in the first personal computer.
-
-Python comes with a few types of Objects to get us started, things like `int` for Integer, `str` for String, `list` for List, etc. We call these base types of Objects "Primitives." Primitives already have methods we can call on them, for example: `.title()` for a String. But what if we wanted to create a new type of object in our programming universe, a new kind of object for our code? With Object Oriented Programming, we can do just that by using the `class` keyword!
+Python comes with a few basic Objects built-in to get us started, things like `int` for Integer, `str` for String, `list` for List, etc. We call these base types of Objects "Primitives." Primitives already have methods we can call on them, for example: `.title()` for a String. But what if we wanted to create a new type of object in our programming universe, a new kind of object for our code? With Object Oriented Programming, we can do just that by using the `class` keyword!
 
 ## Summary
 
-You should now have a better understanding of the concept of Object Oriented Programming (OOP)!
+Object Oriented Programming (OOP) is a way of organizing your code that can make many types of applications easier to write by combining related variables/properties and functions/methods into objects containing both behavior and state.
