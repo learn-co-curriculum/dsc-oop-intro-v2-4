@@ -21,7 +21,7 @@ One solution was to break the common subroutines into separate "functions". This
 
 Languages like Ruby and Python are often considered to be primarily "Object Oriented" (OO) programnming languages. In part, OO programming came from the question where do we put our functions and our data". One way to organize functions is in libraries. This is still done even in OO programming languages, so you might well have a library like `statsmodels` and `import statsmodels.formula.api as smf` to get access to a series of functions related to formulae.
 
-However, in OO programming languages, you also get the ability to create objects. Objects are a logical bundle of functions (they're called methods if they are associated to an object) and variables, and for many classes of programming, once you get used to them, they provide a really useful abstraction.
+However, in OO programming languages, you also get the ability to create objects. Objects are a logical bundle of functions (they're called methods if they are associated to an object) and variables (often called properties when they're associated to an object), and for many classes of programming, once you get used to them, they provide a really useful abstraction.
 
 So, you might have a Person class with it's code saved in a file called `person.py` which describes both the properties of a person (height, weight, date of birth) and their behaviors (everything from their `full_name()` to their `current_age()` ).
 
