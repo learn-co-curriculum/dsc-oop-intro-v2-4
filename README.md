@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this section, you'll be introduced to the concept of Object Oriented Programming (OOP).
+In this section, you'll be introduced to the concept of Object Oriented Programming (OOP). OOP has become a foundational practice in much of software development and programming, allowing developers to build upon each other's code in a fluent manner.
 
 ## Objectives
 
