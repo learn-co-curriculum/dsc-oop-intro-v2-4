@@ -9,7 +9,7 @@ In this section, you'll be introduced to the concept of Object Oriented Programm
 
 You will be able to
 - Explain what Object-Oriented Programming is about
-- Understand why it is important to know about OOP as a data scientist
+- Understand why it is important to know about OOP as a data scientist 
 
 ## Object-Oriented Programming (OOP)
 
