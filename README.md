@@ -1,30 +1,135 @@
-
 # Object-Oriented Programming - Introduction
 
 ## Introduction
 
-In this section, you'll be introduced to the concept of Object-oriented programming (OOP) in Python. OOP has become a foundational practice in much of software development and programming, allowing developers to build upon each other's code in a fluent manner.
+In this section, you'll be introduced to the concept of object-oriented programming (OOP) in Python. OOP has become a foundational practice in much of software development and programming, allowing developers to build upon each other's code in a fluent manner.
+
+## Programming Paradigms
+
+***Programming paradigms*** are formal approaches for structuring code to achieve the desired results.
+
+### Why Do We Need Them?
+
+For very simple programming tasks, there is essentially only one "correct" way to structure the code. For example, if you needed to print the string "Hello, world!", this is how you would do it:
 
 
-## Object-oriented programming (OOP)
+```python
+print("Hello, world!")
+```
 
-When programmers started writing code, originally they took a procedural approach. They'd write a series of sequential steps, using conditional statements and even the dreaded [GOTO](https://en.wikipedia.org/wiki/Goto) statements to branch their logic and their program flow. There would be a set of global variables (variables with values that anyone could change anywhere within the application) for keeping track of the "state" of the application.
+    Hello, world!
 
-Unfortunately, as they got bigger such programs were really hard to manage. Firstly, if they ever wanted to repeat the same business logic, they either had to copy it or loop back to where it was in the program, and secondly, it became really hard to keep track of where those variables got changed, making it really hard to reason about the program and to avoid small changes to the program breaking huge pieces of the application.
 
-One solution was to break the common subroutines into separate "functions". This was a huge step forward. Now you could write a short script, and by calling it multiple times, passing various parameters you could reuse it safely. You could also write small automated tests (unit tests) to verify the behavior of those functions so you'd know how they would behave with various types of inputs. There is a whole branch of software development devoted just to functional programming and it can be a very effective way to write and reason about complex code bases. Languages such as Haskell and Clojure are primarily "Functional Programming languages". They are extremely powerful but have a reputation for being a little harder for developers to learn and use and because of that are less popular than languages that are primarily object-oriented.
+But once your code starts to get more complex, the structure gets less intuitive and obvious. For example, if you needed to reshape some data then display a bar graph, or fit a model then use it to make predictions, how would you design that?
 
-Languages like Ruby and Python are often considered to be primarily "Object-oriented" (OO) programming languages. In part, OO programming came from the question "Where do we put our functions and our data?". One way to organize functions is in libraries. This is still done even in OO programming languages, so you might well have a library like `statsmodels` and use `import statsmodels.formula.api as smf` to get access to a series of functions related to formulae.
+Deciding on a paradigm and sticking to it helps to guide your code design choices, and helps others to understand what your code is doing.
 
-However, in OO programming languages, you also get the ability to create objects. Objects are a logical bundle of functions (they're called methods if they are associated to an object) and variables (often called properties when they're associated to an object), and for many classes of programming, once you get used to them, they provide a really useful abstraction.
+### Procedural Programming
 
-So, you might have a `Person` class with its code saved in a file called `person.py` which describes both the properties of a person (height, weight, date of birth) and their behaviors (everything from their `full_name()` to their `current_age()` ).
+The oldest (and probably most intuitive) modern programming paradigm is procedural programming. This involves writing a series of sequential steps to be executed, possibly with the use of techniques for ***control flow*** (e.g. `if` statements) and ***modular procedures*** (e.g. functions).
 
-Python comes with a few basic built-in objects to get us started, things like `int` for integer, `str` for string, `list` for list, etc. We call these base types of objects "Primitives." Primitives already have methods we can call on them, for example: `.title()` for a string. But what if we wanted to create a new type of object in our programming universe, a new kind of object for our code? With Object-oriented programming, we can do just that by using the `class` keyword!
+Data science code written in a **notebook** is almost always following a procedural programming paradigm. It is useful for telling a story with a single thread, but less useful for building libraries or software that runs without human intervention. Once code starts to get more complicated, we start incorporating more-complex paradigms such as functional programming or OOP.
 
-## Classes and methods
+### Functional Programming
 
-In this section, you'll learn a lot about classes. A Python class can be thought of as the blueprint for creating a code object. These objects are known as an instance objects. Since nearly everything in Python is an object, understanding how to work with objects is critical to developing strong Python skills. You'll also learn about instance methods which are analogous to functions but are "bound" to instance objects. Don't worry if this sounds confusing right now, you'll have plenty of opportunities to explore classes and methods in this section. 
+"Purely functional" programming, using a language like Haskell or Clojure, means that procedural programming is abandoned entirely -- rather than a series of steps, the program consists only of functions, which in turn can be composed of functions or apply functions.
+
+In the development of data science libraries, they tended not to use purely functional programming, but nevertheless incorporated some functional principles.
+
+For example, here is the functional interface to Matplotlib:
+
+
+```python
+import matplotlib.pyplot as plt
+
+plt.figure()
+plt.bar(range(5), [3, 4, 4, 7, 8])
+plt.title("My Graph")
+plt.xlabel("x Label")
+plt.ylabel("y Label");
+```
+
+
+![png](index_files/index_6_0.png)
+
+
+Note that we created this graph without instantiating any variables. We just imported the library, then called a series of functions to create the desired graph. We could rewrite that code snippet like this, to make that aspect even clearer:
+
+
+```python
+from matplotlib.pyplot import figure, bar, title, xlabel, ylabel
+
+figure()
+bar(range(5), [3, 4, 4, 7, 8])
+title("My Graph")
+xlabel("x Label")
+ylabel("y Label");
+```
+
+
+![png](index_files/index_8_0.png)
+
+
+This approach is still preferred by some "old school" data science practitioners, but it has some issues.
+
+It uses ***global variables***, which can get messy as code gets more complex. When the `title()` function is called in the above snippet, for example, the internal logic first has to find the current global axes object, then apply the label to that object. For a programmer to understand what axes object that is, they would need to closely follow the steps of the code, since there is no unique variable assigned to it. With no variable assigned, that also means that the code is less flexible and steps must be performed ***one at a time***.
+
+### Object-Oriented Programming (OOP)
+
+Object-oriented programming takes these global variables and functions and makes them into "member variables" (AKA ***attributes***) and "member functions" (AKA ***methods***). This allows code to be more organized and clear.
+
+For example, in the previous functional Matplotlib example, you might ask *What is `title()` being called on? Is it the figure or the axes?*
+
+To answer this, we could look at the [Matplotlib source code](https://github.com/matplotlib/matplotlib/blob/v3.5.1/lib/matplotlib/pyplot.py#L3024-L3027), which shows this:
+
+```python
+def title(label, fontdict=None, loc=None, pad=None, *, y=None, **kwargs):
+    return gca().set_title(
+        label, fontdict=fontdict, loc=loc, pad=pad, y=y, **kwargs)
+```
+
+`gca()` means "get current axes", so we can tell that this is being applied to the axes.
+
+Or if we use the object-oriented Matplotlib interface instead, the answer becomes much clearer, just by looking at our code:
+
+
+```python
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+ax.bar(range(5), [3, 4, 4, 7, 8])
+ax.set_title("My Graph")
+ax.set_xlabel("x Label")
+ax.set_ylabel("y Label");
+```
+
+
+![png](index_files/index_11_0.png)
+
+
+As you can see, the title is being applied to the axes, not the figure. We can tell because the method call is structured like `ax.<method name>()` and `ax` is our axes variable.
+
+A key takeaways here is that ***you can often do the exact same thing using different paradigms***. They are just different approaches to structuring code, and different people might prefer different approaches.
+
+## OOP Topics
+
+In this section, we will cover:
+
+### Classes and Instances
+
+A Python class can be thought of as the blueprint for creating a code object. These objects are known as an instance objects or instances. We'll go over how to create classes as well as instances.
+
+### Methods and Attributes
+
+Next, we'll dive deeper into how to specify and invoke the functions and variables that are "bound" to instance objects. This includes the ***encapsulation*** and ***abstraction*** principles of OOP.
+
+### Inheritance
+
+Inheritance means that classes can be defined that take on the traits of other classes. This is especially useful when interacting with complex code libraries.
+
+### OOP and Scikit-Learn
+
+Scikit-learn is the most popular machine learning library in use today, and its organization relies heavily on object-oriented programming. We'll go over the types of classes used and some of the most common methods and attributes you should know about.
 
 ## Summary
 
