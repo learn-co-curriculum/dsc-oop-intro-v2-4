@@ -50,7 +50,7 @@ plt.ylabel("y Label");
 ```
 
 
-![png](index_files/index_6_0.png)
+![png](https://github.com/learn-co-curriculum/dsc-oop-intro-v2-4/raw/master/index_files/index_6_0.png)
 
 
 Note that we created this graph without instantiating any variables. We just imported the library, then called a series of functions to create the desired graph. We could rewrite that code snippet like this, to make that aspect even clearer:
@@ -67,7 +67,7 @@ ylabel("y Label");
 ```
 
 
-![png](index_files/index_8_0.png)
+![png](https://github.com/learn-co-curriculum/dsc-oop-intro-v2-4/raw/master/index_files/index_8_0.png)
 
 
 This approach is still preferred by some "old school" data science practitioners, but it has some issues.
@@ -104,7 +104,7 @@ ax.set_ylabel("y Label");
 ```
 
 
-![png](index_files/index_11_0.png)
+![png](https://github.com/learn-co-curriculum/dsc-oop-intro-v2-4/raw/master/index_files/index_11_0.png)
 
 
 As you can see, the title is being applied to the axes, not the figure. We can tell because the method call is structured like `ax.<method name>()` and `ax` is our axes variable.
