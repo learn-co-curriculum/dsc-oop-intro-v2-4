@@ -109,7 +109,7 @@ ax.set_ylabel("y Label");
 
 As you can see, the title is being applied to the axes, not the figure. We can tell because the method call is structured like `ax.<method name>()` and `ax` is our axes variable.
 
-A key takeaways here is that ***you can often do the exact same thing using different paradigms***. They are just different approaches to structuring code, and different people might prefer different approaches.
+A key takeaway here is that ***you can often do the exact same thing using different paradigms***. They are just different approaches to structuring code, and different people might prefer different approaches.
 
 ## OOP Topics
 
@@ -128,6 +128,8 @@ Next, we'll dive deeper into how to specify and invoke the functions and variabl
 Inheritance means that classes can be defined that take on the traits of other classes. This is especially useful when interacting with complex code libraries.
 
 ### OOP and Scikit-Learn
+
+![scikit-learn logo](https://github.com/scikit-learn/scikit-learn/raw/main/doc/logos/scikit-learn-logo.png)
 
 Scikit-learn is the most popular machine learning library in use today, and its organization relies heavily on object-oriented programming. We'll go over the types of classes used and some of the most common methods and attributes you should know about.
 
